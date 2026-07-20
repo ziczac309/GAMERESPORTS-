@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initializeApp() {
 
+    console.log("✅ Gamer Esports Loaded");
+
     loadFeaturedTournament();
     bindButtons();
 
