@@ -169,5 +169,55 @@ window.deleteTournament = function(id){
         alert("Tournament Deleted");
 
     }
-
+  
 }
+
+import {
+ref,
+push,
+set
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const form=document.getElementById("tournamentForm");
+
+form.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+const id=push(ref(db,"tournaments")).key;
+
+await set(ref(db,"tournaments/"+id),{
+
+id,
+
+title:title.value,
+
+game:game.value,
+
+entry:entry.value,
+
+prize:prize.value,
+
+slots:slots.value,
+
+date:date.value,
+
+time:time.value,
+
+joined:0,
+
+status:"Upcoming",
+
+roomId:"",
+
+password:"",
+
+createdAt:Date.now()
+
+});
+
+alert("Tournament Created");
+
+form.reset();
+
+});
