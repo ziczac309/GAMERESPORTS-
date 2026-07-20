@@ -341,3 +341,51 @@ alert("Deleted");
 }
 
 };
+
+// ==========================
+// Joined Players
+// ==========================
+
+const joinedPlayers = document.getElementById("joinedPlayers");
+
+window.viewPlayers = (id) => {
+
+    onValue(ref(db, "tournaments/" + id + "/players"), (snapshot) => {
+
+        joinedPlayers.innerHTML = "";
+
+        if (!snapshot.exists()) {
+
+            joinedPlayers.innerHTML = `
+                <p class="text-gray-400">
+                    No Players Joined
+                </p>
+            `;
+
+            return;
+
+        }
+
+        snapshot.forEach((player) => {
+
+            const p = player.val();
+
+            joinedPlayers.innerHTML += `
+
+            <div class="bg-zinc-900 rounded-xl p-3 mb-2">
+
+                <h3>${p.name}</h3>
+
+                <p>UID : ${p.uid}</p>
+
+                <p>Game UID : ${p.gameUid}</p>
+
+            </div>
+
+            `;
+
+        });
+
+    });
+
+};
