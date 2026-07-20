@@ -389,3 +389,65 @@ window.viewPlayers = (id) => {
     });
 
 };
+
+import {
+  onValue,
+  update,
+  ref
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const paymentContainer = document.getElementById("paymentContainer");
+
+onValue(ref(db, "payments"), (snapshot) => {
+
+    paymentContainer.innerHTML = "";
+
+    if (!snapshot.exists()) {
+
+        paymentContainer.innerHTML =
+        "<p class='text-gray-400'>No Payment Requests</p>";
+
+        return;
+    }
+
+    snapshot.forEach((item) => {
+
+        const p = item.val();
+
+        paymentContainer.innerHTML += `
+
+        <div class="bg-zinc-900 rounded-xl p-4 mb-3">
+
+            <h3>${p.name}</h3>
+
+            <p>Amount : ₹${p.amount}</p>
+
+            <p>Status : ${p.status}</p>
+
+            <button
+            onclick="approvePayment('${item.key}')"
+            class="bg-green-500 w-full rounded-xl py-2 mt-3">
+
+            Approve
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+});
+
+window.approvePayment = async(id)=>{
+
+    await update(ref(db,"payments/"+id),{
+
+        status:"Approved"
+
+    });
+
+    alert("Payment Approved");
+
+}
