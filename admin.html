@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Gamer Esports Admin</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+body{
+background:#080808;
+color:#fff;
+font-family:Arial,sans-serif;
+padding-bottom:100px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#FFD700;
+}
+
+.card{
+background:#171717;
+border-radius:18px;
+padding:18px;
+border:1px solid #292929;
+margin-bottom:15px;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+padding:15px;
+}
+
+.stat{
+text-align:center;
+}
+
+.stat h1{
+font-size:28px;
+font-weight:bold;
+color:#FFD700;
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+margin-top:10px;
+font-weight:bold;
+background:#FFD700;
+color:#000;
+}
+
+.menu{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:70px;
+background:#111;
+display:flex;
+justify-content:space-around;
+align-items:center;
+border-top:1px solid #2c2c2c;
+}
+
+.menu i{
+font-size:22px;
+color:#fff;
+}
+
+.active{
+color:#FFD700;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div>
+
+<div class="logo">
+Gamer Esports
+</div>
+
+<div style="color:gray">
+Admin Dashboard
+</div>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-user-shield fa-2x"></i>
+
+</div>
+
+</div>
+
+<div class="grid2">
+
+<div class="card stat">
+
+<h1 id="totalUsers">0</h1>
+
+<p>Total Users</p>
+
+</div>
+
+<div class="card stat">
+
+<h1 id="liveTournament">0</h1>
+
+<p>Live Tournament</p>
+
+</div>
+
+<div class="card stat">
+
+<h1 id="todayMatches">0</h1>
+
+<p>Today's Matches</p>
+
+</div>
+
+<div class="card stat">
+
+<h1 id="revenue">₹0</h1>
+
+<p>Revenue</p>
+
+</div>
+
+</div>
+
+<div style="padding:15px">
+
+<button class="btn" id="createTournament">
+🏆 Create Tournament
+</button>
+
+<button class="btn" id="privateMatch">
+🔒 Private Match
+</button>
+
+<button class="btn" id="manageBanner">
+🖼 Banner Manager
+</button>
+
+<button class="btn" id="manageNotice">
+📢 Notice Manager
+</button>
+
+<button class="btn" id="manageUsers">
+👥 User Manager
+</button>
+
+<button class="btn" id="manageStaff">
+👨‍💼 Staff Manager
+</button>
+
+<button class="btn" id="payments">
+💰 Payment Requests
+</button>
+
+<button class="btn" id="settings">
+⚙ Settings
+</button>
+
+</div>
+
+<div class="menu">
+
+<i class="fa-solid fa-house active"></i>
+
+<i class="fa-solid fa-trophy"></i>
+
+<i class="fa-solid fa-users"></i>
+
+<i class="fa-solid fa-wallet"></i>
+
+<i class="fa-solid fa-gear"></i>
+
+</div>
+
+<script src="js/admin.js" type="module"></script>
+
+</body>
+</html>
