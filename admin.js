@@ -221,3 +221,123 @@ alert("Tournament Created");
 form.reset();
 
 });
+
+import {
+onValue,
+update,
+remove
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const container=document.getElementById("tournamentContainer");
+
+onValue(ref(db,"tournaments"),(snapshot)=>{
+
+container.innerHTML="";
+
+if(!snapshot.exists()){
+
+container.innerHTML="<p>No Tournament Found</p>";
+
+return;
+
+}
+
+snapshot.forEach((item)=>{
+
+const t=item.val();
+
+container.innerHTML+=`
+
+<div class="bg-zinc-900 rounded-xl p-4 border border-zinc-700">
+
+<h2 class="text-lg font-bold">${t.title}</h2>
+
+<p>💰 Prize : ₹${t.prize}</p>
+
+<p>🎟 Entry : ₹${t.entry}</p>
+
+<p>👥 Slots : ${t.joined}/${t.slots}</p>
+
+<p>📅 ${t.date}</p>
+
+<p>⏰ ${t.time}</p>
+
+<input
+placeholder="Room ID"
+id="room${item.key}"
+value="${t.roomId||""}"
+class="w-full mt-2 p-2 rounded bg-black border border-zinc-700">
+
+<input
+placeholder="Room Password"
+id="pass${item.key}"
+value="${t.password||""}"
+class="w-full mt-2 p-2 rounded bg-black border border-zinc-700">
+
+<select
+id="status${item.key}"
+class="w-full mt-2 p-2 rounded bg-black border border-zinc-700">
+
+<option ${t.status=="Upcoming"?"selected":""}>Upcoming</option>
+
+<option ${t.status=="Live"?"selected":""}>Live</option>
+
+<option ${t.status=="Completed"?"selected":""}>Completed</option>
+
+</select>
+
+<div class="grid grid-cols-2 gap-2 mt-3">
+
+<button
+onclick="saveTournament('${item.key}')"
+class="bg-green-500 rounded-xl py-2">
+
+Save
+
+</button>
+
+<button
+onclick="deleteTournament('${item.key}')"
+class="bg-red-500 rounded-xl py-2">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+window.saveTournament=async(id)=>{
+
+await update(ref(db,"tournaments/"+id),{
+
+roomId:document.getElementById("room"+id).value,
+
+password:document.getElementById("pass"+id).value,
+
+status:document.getElementById("status"+id).value
+
+});
+
+alert("Tournament Updated");
+
+};
+
+window.deleteTournament=async(id)=>{
+
+if(confirm("Delete Tournament?")){
+
+await remove(ref(db,"tournaments/"+id));
+
+alert("Deleted");
+
+}
+
+};
