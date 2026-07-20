@@ -1,99 +1,85 @@
-// Gamer Esports v1
+// =======================================
+// Gamer Esports App
+// Version 2.0
+// =======================================
 
-// ---------- Banner Slider ----------
+document.addEventListener("DOMContentLoaded", () => {
 
-const banners = [
-    "🔥 FREE FIRE TOURNAMENT",
-    "🏆 WIN CASH DAILY",
-    "🎮 PLAY & EARN",
-    "💎 CUSTOM ROOM MATCHES"
-];
+    console.log("✅ Gamer Esports Loaded");
 
-let bannerIndex = 0;
+    initializeApp();
 
-const banner = document.querySelector(".banner");
+});
 
-function changeBanner(){
+function initializeApp() {
 
-    if(!banner) return;
+    loadFeaturedTournament();
+    bindButtons();
 
-    banner.innerHTML = banners[bannerIndex];
-
-    bannerIndex++;
-
-    if(bannerIndex >= banners.length){
-        bannerIndex = 0;
-    }
 }
 
-changeBanner();
-setInterval(changeBanner,3000);
+function loadFeaturedTournament() {
 
+    const featured = document.getElementById("featuredTournament");
 
-// ---------- Countdown Timer ----------
+    if (!featured) return;
 
-function startCountdown(){
+    featured.innerHTML = `
+        <div class="tournamentCard">
 
-    const timers = document.querySelectorAll(".countdown");
+            <div class="tournamentBanner">
+                FREE FIRE
+            </div>
 
-    timers.forEach(timer=>{
+            <div class="tournamentBody">
 
-        let time = Number(timer.dataset.time);
+                <h3 class="tournamentTitle">
+                    Squad Cash Tournament
+                </h3>
 
-        setInterval(()=>{
+                <div class="tournamentInfo">
 
-            if(time<=0){
-                timer.innerHTML="Match Started";
-                return;
-            }
+                    <div class="infoBox">
+                        <span>Prize Pool</span>
+                        <strong>₹5000</strong>
+                    </div>
 
-            let h=Math.floor(time/3600);
-            let m=Math.floor((time%3600)/60);
-            let s=time%60;
+                    <div class="infoBox">
+                        <span>Entry Fee</span>
+                        <strong>₹50</strong>
+                    </div>
 
-            timer.innerHTML=`${h}h ${m}m ${s}s`;
+                    <div class="infoBox">
+                        <span>Slots</span>
+                        <strong>48 / 48</strong>
+                    </div>
 
-            time--;
+                    <div class="infoBox">
+                        <span>Time</span>
+                        <strong>8:00 PM</strong>
+                    </div>
 
-        },1000);
+                </div>
+
+                <button class="joinBtn" id="joinTournamentBtn">
+                    JOIN TOURNAMENT
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+function bindButtons() {
+
+    document.addEventListener("click", (e) => {
+
+        if (e.target.id === "joinTournamentBtn") {
+            alert("Firebase Join System Coming Next");
+        }
 
     });
 
 }
-
-startCountdown();
-
-
-// ---------- Bottom Navigation ----------
-
-const navItems=document.querySelectorAll(".bottomNav i");
-
-navItems.forEach(item=>{
-
-    item.addEventListener("click",()=>{
-
-        navItems.forEach(i=>i.classList.remove("active"));
-
-        item.classList.add("active");
-
-    });
-
-});
-
-
-// ---------- Join Button ----------
-
-document.querySelectorAll(".joinBtn").forEach(btn=>{
-
-    btn.onclick=()=>{
-
-        alert("Tournament Join Page Coming Soon");
-
-    }
-
-});
-
-
-// ---------- Welcome ----------
-
-console.log("Gamer Esports Loaded Successfully");
