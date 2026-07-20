@@ -1,3 +1,5 @@
+import { db, auth } from "./firebase.js";
+
 // =======================================
 // Gamer Esports App
 // Version 2.0
