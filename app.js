@@ -7,7 +7,7 @@ import { db, auth } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("✅ Gamer Esports Loaded");
+    alert("✅ Gamer Esports Loaded");
 
     initializeApp();
 
