@@ -1,172 +1,92 @@
-/* Gamer Esports v1 */
+/* =========================
+   GAMER ESPORTS
+   Production UI v1
+========================= */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+
+    --bg:#f7f7f8;
+    --card:#ffffff;
+    --black:#111111;
+    --text:#222222;
+    --sub:#707070;
+    --border:#e7e7e7;
+
+    --primary:#111111;
+    --primaryText:#ffffff;
+
+    --radius:22px;
+
 }
 
 body{
-    background:#0b0b0b;
-    color:#fff;
-    padding-bottom:80px;
+
+    background:var(--bg);
+    color:var(--text);
+
+    font-family:
+    Inter,
+    Poppins,
+    Arial,
+    sans-serif;
+
+    min-height:100vh;
+
 }
 
-/* Header */
+#app{
 
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    max-width:430px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    padding-bottom:95px;
+
+}
+
+.container{
+
     padding:18px;
+
 }
 
-.logo{
-    font-size:26px;
-    font-weight:700;
-    color:#FFD700;
+.card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.05);
+
 }
 
-.subTitle{
-    color:#888;
-    font-size:13px;
-}
+button{
 
-.iconBox{
-    display:flex;
-    gap:18px;
-    font-size:22px;
-}
-
-.iconBox i{
-    cursor:pointer;
-}
-
-/* Banner */
-
-.banner{
-    margin:15px;
-    height:180px;
-    border-radius:20px;
-    background:linear-gradient(135deg,#FFD700,#FF9800);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#000;
-    font-size:28px;
-    font-weight:bold;
-    text-align:center;
-}
-
-/* Notice */
-
-.notice{
-    margin:15px;
-    background:#171717;
-    border-radius:14px;
-    padding:10px;
-}
-
-/* Categories */
-
-.categoryGrid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    padding:15px;
-}
-
-.categoryCard{
-    background:#171717;
-    border-radius:16px;
-    text-align:center;
-    padding:18px;
-    transition:.3s;
-}
-
-.categoryCard:hover{
-    transform:scale(1.05);
-}
-
-.categoryCard p{
-    margin-top:8px;
-    font-size:13px;
-}
-
-/* Tournament */
-
-.sectionTitle{
-    padding:15px;
-    font-size:20px;
-    font-weight:bold;
-}
-
-.tournamentCard{
-    background:#171717;
-    margin:15px;
-    border-radius:18px;
-    padding:18px;
-}
-
-.tournamentTop{
-    display:flex;
-    justify-content:space-between;
-}
-
-.prize{
-    color:#FFD700;
-}
-
-.joinBtn{
-    width:100%;
-    margin-top:18px;
-    background:#FFD700;
-    color:#000;
     border:none;
-    padding:14px;
-    border-radius:14px;
-    font-size:17px;
-    font-weight:bold;
+
+    cursor:pointer;
+
+    font-size:15px;
+
 }
 
-/* Bottom Navigation */
+img{
 
-.bottomNav{
-    position:fixed;
-    bottom:0;
-    left:0;
     width:100%;
-    height:70px;
-    background:#121212;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    border-top:1px solid #2a2a2a;
-}
 
-.bottomNav i{
-    color:#fff;
-    font-size:22px;
-}
+    display:block;
 
-.active{
-    color:#FFD700!important;
-}
-
-/* Animation */
-
-.fade{
-    animation:fade .5s;
-}
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
